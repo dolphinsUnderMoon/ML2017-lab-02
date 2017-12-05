@@ -61,7 +61,7 @@ def train(x_train, y_train, x_test, y_test, method, iters, test_errors):
             output = sigmoid(np.dot(x_train[i], theta))
             error = output - y_train[i]
             grad = np.dot(x_train[i], error)
-            norm = np.dot(grad, grad)
+            norm = grad * grad
             expectation = rho * expectation + (1 - rho) * norm
             theta = theta - lr * grad / (np.sqrt(expectation) + delta)
 

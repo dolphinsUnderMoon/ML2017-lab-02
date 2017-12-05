@@ -56,7 +56,7 @@ def train(x_train, y_train, x_test, y_test, method, iters, test_errors):
         for i in range(max_iterations):
             output = np.dot(x_train[i], theta)
             grad = max(0, 1 - y_train[i] * output) * (-y_train[i] * x_train[i]) + gamma * theta
-            norm = np.dot(grad, grad)
+            norm = grad * grad
             expectation = rho * expectation + (1 - rho) * norm
             theta = theta - lr * grad / (np.sqrt(expectation) + delta)
 
